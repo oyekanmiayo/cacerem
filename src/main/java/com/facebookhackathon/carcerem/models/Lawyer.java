@@ -12,6 +12,7 @@ import java.util.List;
  * @author: Ayomide Oyekanmi aoyekanmi@teamapt.com, ayomideoyekanmi@gmail.com
  * @date: 2020-02-08
  */
+@Entity
 @Getter
 @Setter
 @JsonIgnoreProperties(value = {"inmateList"})
