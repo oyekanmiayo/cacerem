@@ -15,14 +15,14 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@JsonIgnoreProperties(value = {"inmateList"})
+@JsonIgnoreProperties(value = {"inmates"})
 public class Lawyer {
     String name;
     String email;
     String mobileNumber;
     Crime crimeInterest;
     @OneToMany(mappedBy = "lawyer", cascade = CascadeType.ALL)
-    List<Inmate> inmateList;
+    List<Inmate> inmates;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Getter

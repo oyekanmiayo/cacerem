@@ -1,13 +1,11 @@
 package com.facebookhackathon.carcerem.controllers;
 
+import com.facebookhackathon.carcerem.models.Inmate;
 import com.facebookhackathon.carcerem.models.InmateCreationModel;
 import com.facebookhackathon.carcerem.models.ResponseModel;
 import com.facebookhackathon.carcerem.service.InmateService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author: Ayomide Oyekanmi aoyekanmi@teamapt.com, ayomideoyekanmi@gmail.com
@@ -34,5 +32,11 @@ public class InmateController {
     @RequestMapping(value = "/assign_lawyer", method = RequestMethod.POST)
     public ResponseModel assignLawyerToInmate(@RequestBody InmateCreationModel model) {
         return  inmateService.assignLawyerToInmate(model);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/get_inmate")
+    public Inmate getInmate(@RequestParam("inmateId") String inmateId){
+        return inmateService.getInmate(inmateId);
     }
 }

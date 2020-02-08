@@ -24,8 +24,8 @@ public class AccountUser {
     String password;
     String mobileNumber;
     String address;
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    List<Inmate> inmateList;
+    @OneToMany(mappedBy = "accountUser", cascade = CascadeType.ALL)
+    List<Inmate> inmates;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Getter

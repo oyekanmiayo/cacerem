@@ -36,7 +36,7 @@ public class InmateService {
         AccountUser accountUser = accountUserService.getUser(model.getCreatorUsername());
 
         Inmate inmate = model.getDetails();
-        inmate.setUser(accountUser);
+        inmate.setAccountUser(accountUser);
         inmateRepository.save(inmate);
 
         ResponseModel responseModel = new ResponseModel();
@@ -71,9 +71,14 @@ public class InmateService {
             return responseModel;
         }
         inmate.setLawyer(lawyer);
+        inmateRepository.save(inmate);
 
         ResponseModel responseModel = new ResponseModel();
         responseModel.setLawyer(lawyer);
         return responseModel;
+    }
+
+    public Inmate getInmate(String inmateId) {
+        return inmateRepository.findById(Long.valueOf(inmateId)).orElse(null);
     }
 }

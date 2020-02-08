@@ -21,7 +21,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties(value = {"user"})
+@JsonIgnoreProperties(value = {"accountUser"})
 public class Inmate {
     String name;
     String crimeDescription;
@@ -29,8 +29,8 @@ public class Inmate {
     InmateStatus inmateStatus;
     Judgement judgement;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "accountuser_id")
-    AccountUser user;
+    @JoinColumn(name = "account_user_id")
+    AccountUser accountUser;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "lawyer_id")
     Lawyer lawyer;
