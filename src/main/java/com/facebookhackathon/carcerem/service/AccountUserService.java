@@ -2,11 +2,15 @@ package com.facebookhackathon.carcerem.service;
 
 import com.facebookhackathon.carcerem.models.AccountUser;
 import com.facebookhackathon.carcerem.models.AccountUserLoginModel;
+import com.facebookhackathon.carcerem.models.Inmate;
 import com.facebookhackathon.carcerem.models.ResponseModel;
 import com.facebookhackathon.carcerem.repositories.AccountUserRepository;
 import com.facebookhackathon.carcerem.repositories.InmateRepository;
 import com.facebookhackathon.carcerem.util.Status;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author: Ayomide Oyekanmi aoyekanmi@teamapt.com, ayomideoyekanmi@gmail.com
@@ -15,11 +19,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class AccountUserService {
 
+
     private final AccountUserRepository accountUserRepository;
-    private final InmateRepository inmateRepository;
+    final
+    InmateRepository inmateRepository;
 
     public AccountUserService(AccountUserRepository accountUserRepository, InmateRepository inmateRepository) {
         this.accountUserRepository = accountUserRepository;
+
         this.inmateRepository = inmateRepository;
     }
 
@@ -51,5 +58,14 @@ public class AccountUserService {
 
     public AccountUser getUser(String username) {
         return accountUserRepository.findAccountUserByUsername(username);
+    }
+
+    public ResponseModel getInmatesForUser(Long accountUserId) {
+        List<Inmate> inmates = inmateRepository.findAllByAccountUser_Id(accountUserId);
+        ResponseModel responseModel = new ResponseModel();
+        responseModel.setInmateList(inmates);
+        responseModel.setStatus(Status.SUCCESSFUL);
+        responseModel.setDescription("Successful");
+        return responseModel;
     }
 }

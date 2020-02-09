@@ -5,10 +5,7 @@ import com.facebookhackathon.carcerem.models.AccountUserLoginModel;
 import com.facebookhackathon.carcerem.models.ResponseModel;
 import com.facebookhackathon.carcerem.service.AccountUserService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author: Ayomide Oyekanmi aoyekanmi@teamapt.com, ayomideoyekanmi@gmail.com
@@ -35,6 +32,12 @@ public class AccountUserController {
     @RequestMapping(value = "/login_user", method = RequestMethod.POST)
     public ResponseModel login(@RequestBody AccountUserLoginModel model) {
         return accountUserService.getAccountUserLoginResponse(model);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/cases", method = RequestMethod.GET)
+    public ResponseModel getInmatesForUser(@RequestParam("userId") String userId){
+        return accountUserService.getInmatesForUser(Long.valueOf(userId));
     }
 
 }

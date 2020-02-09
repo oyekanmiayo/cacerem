@@ -4,6 +4,8 @@ import com.facebookhackathon.carcerem.util.Status;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 /**
  * @author: Ayomide Oyekanmi aoyekanmi@teamapt.com, ayomideoyekanmi@gmail.com
  * @date: 2020-02-08
@@ -15,4 +17,5 @@ public class ResponseModel {
     Lawyer lawyer;
     String description;
     Status status;
+    List<Inmate> inmateList;
 }

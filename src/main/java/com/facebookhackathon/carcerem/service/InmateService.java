@@ -5,6 +5,8 @@ import com.facebookhackathon.carcerem.repositories.InmateRepository;
 import com.facebookhackathon.carcerem.util.Status;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author: Ayomide Oyekanmi aoyekanmi@teamapt.com, ayomideoyekanmi@gmail.com
  * @date: 2020-02-08
